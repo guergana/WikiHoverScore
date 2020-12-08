@@ -1,12 +1,12 @@
 
-const wikiUrl = 'https://www.wikidata.org';
+const wikiEndpoint = 'https://www.wikidata.org/w/api.php';
+const params = 'action=query&list=allrevisions&arvdir=newer&arvlimit=50&arvstart=2020-10-01T00:00:00Z&arvend=2020-11-01T00:00:00Z&&format=json';
 
-const apiUrl = `${wikiUrl}/w/api.php?action=query&list=allrevisions&arvdir=newer&arvlimit=50&arvstart=2020-10-01T00:00:00Z&arvend=2020-11-01T00:00:00Z`;
+const apiUrl = `${wikiEndpoint}?${params}&origin=*`;
 
-fetch(apiUrl, {
-    headers: {
-        'Access-Control-Allow-Origin': '*'
-    }
-})
-    .then(response => response.json())
-    .then(data => console.log(data));
+fetch( apiUrl)
+    .then(function (response) { 
+        return response.json(); })
+    .then(function (data) {
+        console.log(data)
+    });
